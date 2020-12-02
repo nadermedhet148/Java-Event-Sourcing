@@ -36,7 +36,7 @@ public class Account {
         jsonObject.put("account_id" , this.id);
         jsonObject.put("user_id" , this.userId);
         jsonObject.put("balance", this.balance);
-        jsonObject.put("event_type", "BALANCE_CHANGED");
+        jsonObject.put("event_type", "BALANCE_CHANGED_"+this.userId);
         jsonObject.put("created_at" , new Date().toString());
         return jsonObject.toString();
     }

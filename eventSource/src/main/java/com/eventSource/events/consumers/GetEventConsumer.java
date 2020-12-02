@@ -75,7 +75,7 @@ public class GetEventConsumer extends EventConsumer  {
     }
 
     private String getEvents(String eventType){
-        List<Event> events = this.eventRepository.findAll();
+        List<Event> events = this.eventRepository.findByEventState(eventType);
         JSONArray jsonArray = new JSONArray();
         events.forEach((event -> {
             jsonArray.put(event.toJson());

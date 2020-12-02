@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface IEventRepository extends MongoRepository<Event, String> {
-    List<Event> findByEventType(String eventType);
+    List<Event> findByEventState(String eventType);
 
 }

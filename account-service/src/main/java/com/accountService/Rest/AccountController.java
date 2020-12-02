@@ -7,6 +7,7 @@ import com.accountService.events.RSPClient;
 import com.accountService.models.Account;
 import com.accountService.repository.IAccountRepo;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,8 +45,8 @@ public class AccountController {
 
     @GetMapping(value = "/{id}")
     public String getUserAccountHistory(@PathVariable Integer id) throws IOException, TimeoutException, InterruptedException {
-        String s = this.rspClient.call(EVENTS.EVENT_LIST);
-        return s;
+        String result = this.rspClient.call("BALANCE_CHANGED_"+id);
+        return result;
     }
 
 }
