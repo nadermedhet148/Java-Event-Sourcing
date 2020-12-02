@@ -1,5 +1,7 @@
 version: "3"
 services:
+  wait:
+    image: dokku/wait
   rabbitmq:
     image: rabbitmq:3.8.9-alpine
     container_name: rabbitmq-source
@@ -15,9 +17,32 @@ services:
     image: customer-service:latest
     ports:
       - "8100:8000"
+    depends_on: 
+      - rabbitmq
 
   account-service:
     container_name: account-service
     image: account-service:latest
     ports:
       - "8000:8000"
+    depends_on: 
+      - rabbitmq
+    links: 
+       - rabbitmq
+    environment:
+      WAIT_HOSTS: rabbitmq:5672
+  event-source:
+    container_name: event-source
+    image: event-source:latest
+    ports:
+      - "8200:8000"
+    environment:
+      WAIT_HOSTS: rabbitmq:5672,mongo:27017
+  mongo:
+    image: mongo
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"

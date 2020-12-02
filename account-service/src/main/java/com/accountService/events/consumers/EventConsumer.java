@@ -13,6 +13,7 @@ public abstract class EventConsumer {
 
     public void consume(String QUEUE_NAME , DeliverCallback deliverCallback) throws IOException, TimeoutException {
         Channel channel = this.rmqBase.getChannel();
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
     }
 

@@ -6,4 +6,8 @@ cd account-service
 mvn package
 docker build . -t account-service
 cd ..
+cd eventSource
+mvn package
+docker build . -t event-source
+cd ..
 docker-compose  up

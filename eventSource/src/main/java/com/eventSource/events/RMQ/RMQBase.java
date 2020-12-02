@@ -1,4 +1,4 @@
-package com.accountService.events.RMQ;
+package com.eventSource.events.RMQ;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
