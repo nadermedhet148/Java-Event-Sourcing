@@ -16,7 +16,9 @@ public class EventSourceApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(EventSourceApplication.class, args);
 		EventConsumer userCreatedConsumer = (EventConsumer) context.getBean("createdEvent");
-		List<EventConsumer> consumers = Arrays.asList(userCreatedConsumer);
+		EventConsumer getEventConsumer = (EventConsumer) context.getBean("getEventConsumer");
+
+		List<EventConsumer> consumers = Arrays.asList(userCreatedConsumer,getEventConsumer);
 		consumers.forEach(c->{
 			try {
 				c.eventConsume();

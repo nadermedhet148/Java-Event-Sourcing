@@ -3,14 +3,12 @@ package com.accountService.Rest;
 import com.accountService.Rest.requests.ChangeBalanceRequest;
 import com.accountService.events.EVENTS;
 import com.accountService.events.EventPubliser;
+import com.accountService.events.RSPClient;
 import com.accountService.models.Account;
 import com.accountService.repository.IAccountRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,6 +24,9 @@ public class AccountController {
     @Autowired
     EventPubliser eventPubliser;
 
+    @Autowired
+    RSPClient rspClient;
+
 
     @PostMapping(value = "")
     public String ChangeBalance(@RequestBody ChangeBalanceRequest body) throws IOException, TimeoutException {
@@ -39,6 +40,12 @@ public class AccountController {
         }
 
         return "account dosn't existed";
+    }
+
+    @GetMapping(value = "/{id}")
+    public String getUserAccountHistory(@PathVariable Integer id) throws IOException, TimeoutException, InterruptedException {
+        String s = this.rspClient.call(EVENTS.EVENT_LIST);
+        return s;
     }
 
 }
