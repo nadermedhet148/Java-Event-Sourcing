@@ -1,3 +1,5 @@
+cd nginx-server
+docker build . -t nginx-service
 cd customer-service
 mvn package
 docker build . -t customer-service

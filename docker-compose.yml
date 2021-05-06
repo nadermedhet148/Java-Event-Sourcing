@@ -2,6 +2,11 @@ version: "3"
 services:
   wait:
     image: dokku/wait
+  nginx-server:
+    image: nginx-service
+    container_name: nginx-service
+    ports:
+      - "7000:80"
   rabbitmq:
     image: rabbitmq:3.8.9-alpine
     container_name: rabbitmq-source
@@ -12,11 +17,25 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-  customer-service:
-    container_name: customer-service
+  customer-service-1:
+    container_name: customer-service-1
     image: customer-service:latest
     ports:
-      - "8100:8000"
+      - "8101:8000"
+    depends_on: 
+      - rabbitmq
+  customer-service-2:
+    container_name: customer-service-2
+    image: customer-service:latest
+    ports:
+      - "8102:8000"
+    depends_on: 
+      - rabbitmq
+  customer-service-3:
+    container_name: customer-service-3
+    image: customer-service:latest
+    ports:
+      - "8103:8000"
     depends_on: 
       - rabbitmq
 
