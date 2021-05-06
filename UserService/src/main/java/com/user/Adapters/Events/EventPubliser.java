@@ -1,7 +1,7 @@
-package com.customer.events;
+package com.user.Adapters.Events;
 
-import com.customer.events.RMQ.RMQBase;
 import com.rabbitmq.client.Channel;
+import com.user.Adapters.Events.RMQ.RMQBase;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

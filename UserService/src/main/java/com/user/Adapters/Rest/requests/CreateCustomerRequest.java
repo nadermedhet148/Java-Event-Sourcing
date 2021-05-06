@@ -1,4 +1,4 @@
-package com.customer.Rest.requests;
+package com.user.Rest.requests;
 
 import lombok.*;
 
