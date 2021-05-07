@@ -5,5 +5,5 @@ import java.util.concurrent.TimeoutException;
 
 public interface IEventPublisher {
 
-    public void publish(Event ev) throws IOException, TimeoutException;
+    public void publish(DomainEvent ev) throws IOException, TimeoutException;
 }

@@ -17,7 +17,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class Events {
+public class Event {
 
     @Id
     @GeneratedValue
@@ -33,7 +33,6 @@ public class Events {
     @Column(name = "data")
     private String data;
 
-    @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
 

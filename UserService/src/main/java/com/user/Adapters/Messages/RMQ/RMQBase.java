@@ -12,7 +12,7 @@ public class RMQBase {
     public  Channel getChannel() throws IOException, TimeoutException {
 
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("rabbitmq");
+        factory.setHost("localhost");
         factory.setUsername("root");
         factory.setPassword("root");
         Connection connection = factory.newConnection();

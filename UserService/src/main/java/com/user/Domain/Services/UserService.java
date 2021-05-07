@@ -26,6 +26,7 @@ public class UserService {
         User user = new User();
         UserCreatedEvent ev =  user.process(cm);
         this.publisher.publish(ev);
+
         this.eventRepository.save(ev);
         return ev;
     }

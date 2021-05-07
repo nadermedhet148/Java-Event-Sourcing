@@ -30,7 +30,7 @@ public class User {
     }
 
     public void apply(UserCreatedEvent ev) {
-        this.userId = ev.getUserId();
+        this.userId = ev.getEntityId();
         this.username = ev.getUsername();
         this.balance = ev.getBalance();
     }

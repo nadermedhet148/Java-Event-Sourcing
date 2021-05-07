@@ -8,14 +8,14 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public abstract class Event {
+public abstract class DomainEvent {
     private String entityName ;
 
-    private Date createdAt;
+    private String entityId ;
+
+    private Date createdAt = new Date();
 
     private String data;
 

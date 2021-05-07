@@ -1,67 +1,14 @@
 version: "3"
 services:
-  wait:
-    image: dokku/wait
-  nginx-server:
-    image: nginx-service
-    container_name: nginx-service
-    ports:
-      - "7000:80"
   rabbitmq:
+    network_mode: 'host'
+    hostname: "rabbitmq-host"
     image: rabbitmq:3.8.9-alpine
-    container_name: rabbitmq-source
+    container_name: rabbit_mq
     environment:
       - RABBITMQ_DEFAULT_USER=root
       - RABBITMQ_DEFAULT_PASS=root
-      - RABBITMQ_ERLANG_COOKIE=fzcookie
+      - RABBITMQ_ERLANG_COOKIE=cookie
     ports:
       - "5672:5672"
       - "15672:15672"
-  customer-service-1:
-    container_name: customer-service-1
-    image: customer-service:latest
-    ports:
-      - "8101:8000"
-    depends_on: 
-      - rabbitmq
-  customer-service-2:
-    container_name: customer-service-2
-    image: customer-service:latest
-    ports:
-      - "8102:8000"
-    depends_on: 
-      - rabbitmq
-  customer-service-3:
-    container_name: customer-service-3
-    image: customer-service:latest
-    ports:
-      - "8103:8000"
-    depends_on: 
-      - rabbitmq
-
-  account-service:
-    container_name: account-service
-    image: account-service:latest
-    ports:
-      - "8000:8000"
-    depends_on: 
-      - rabbitmq
-    links: 
-       - rabbitmq
-    environment:
-      WAIT_HOSTS: rabbitmq:5672
-  event-source:
-    container_name: event-source
-    image: event-source:latest
-    ports:
-      - "8200:8000"
-    environment:
-      WAIT_HOSTS: rabbitmq:5672,mongo:27017
-  mongo:
-    image: mongo
-    container_name: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-    ports:
-      - "27017:27017"
