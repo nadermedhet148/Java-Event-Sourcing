@@ -1,8 +1,8 @@
-package com.user.Adapters.Events;
+package com.user.Adapters.Messages;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DeliverCallback;
-import com.user.Adapters.Events.RMQ.RMQBase;
+import com.user.Adapters.Messages.RMQ.RMQBase;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
