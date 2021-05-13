@@ -27,7 +27,19 @@ public class Transaction {
 
     private String status;
 
-    private Date createdAt;
+    private Date createdAt = new Date();
+
+    public  TransactionCreatedEvent process(CreateTransactionCommand cm){
+        this.setAmount(cm.getAmount());
+        this.setUserId(cm.getUserId());
+        this.setType(cm.getType());
+        TransactionCreatedEvent event = new TransactionCreatedEvent(
+                this.getTransactionId(),
+                this.getUserId() ,
+                this.getAmount() ,
+                this.getType());
+        return event;
+    }
 
 
 }
