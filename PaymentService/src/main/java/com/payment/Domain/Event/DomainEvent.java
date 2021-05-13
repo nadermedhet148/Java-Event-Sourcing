@@ -13,6 +13,8 @@ public abstract class DomainEvent {
 
     private String entityId ;
 
+    private String eventType;
+
     private Date createdAt = new Date();
     
 }

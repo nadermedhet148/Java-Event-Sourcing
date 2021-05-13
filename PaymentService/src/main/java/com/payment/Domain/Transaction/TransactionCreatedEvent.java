@@ -11,7 +11,7 @@ import java.util.Date;
 @Setter
 @Getter
 public class TransactionCreatedEvent extends DomainEvent {
-    private int transactionId;
+    private Integer transactionId;
 
     private String userId;
 
@@ -20,13 +20,14 @@ public class TransactionCreatedEvent extends DomainEvent {
     private String type;
 
     public TransactionCreatedEvent(
-            int transactionId,
+            Integer transactionId,
             String userId,
             Float amount,
             String type
     ){
         this.setEntityName("Transaction");
         this.setEntityId(String.valueOf(transactionId));
+        this.setEventType("TransactionCreated");
         this.userId = userId;
         this.amount = amount;
         this.type = type;

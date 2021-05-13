@@ -20,7 +20,7 @@ public class Transaction {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private int id ;
+    private Integer id ;
 
 
     @Column(name = "user_id")

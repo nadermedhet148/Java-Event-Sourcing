@@ -12,6 +12,8 @@ import lombok.Setter;
 public class RejectTransactionCommand {
     private String userId;
 
-    private int transactionId;
-    
+    private Integer transactionId;
+
+    private String reason;
+
 }

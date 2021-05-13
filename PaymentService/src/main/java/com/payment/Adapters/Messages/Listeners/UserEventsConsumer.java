@@ -9,10 +9,12 @@ import com.payment.Domain.Services.TransactionService;
 import com.payment.Domain.Transaction.AcceptTransactionCommand;
 import com.payment.Domain.Transaction.CreateTransactionCommand;
 import com.payment.Domain.Transaction.ITransactionRepository;
+import com.payment.Domain.Transaction.RejectTransactionCommand;
 import com.rabbitmq.client.DeliverCallback;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -30,6 +32,7 @@ public class UserEventsConsumer extends EventConsumer {
 
 
     @Override
+    @Transactional
     public void eventConsume() throws IOException, TimeoutException {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String messageBody = new String(delivery.getBody(), "UTF-8");
@@ -39,13 +42,16 @@ public class UserEventsConsumer extends EventConsumer {
             switch (json.getString("eventType")){
                 case "TransactionSucceed" :
                         service.acceptTransaction(objectMapper.readValue(messageBody , AcceptTransactionCommand.class ));
-
+                        return;
+                case "TransactionFailed" :
+                        service.rejectTransaction(objectMapper.readValue(messageBody , RejectTransactionCommand.class ));
+                        return;
             }
 
             System.out.println(" [x] Received '" + messageBody + "'");
         };
 
-        this.consume("Transaction_QUEUE",deliverCallback);
+        this.consume("User_QUEUE",deliverCallback);
     }
 
 }

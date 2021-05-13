@@ -17,7 +17,7 @@ import java.util.UUID;
 @Setter
 public class Transaction {
 
-    private int transactionId;
+    private Integer transactionId;
 
     private String userId;
 
@@ -33,6 +33,7 @@ public class Transaction {
         this.setAmount(cm.getAmount());
         this.setUserId(cm.getUserId());
         this.setType(cm.getType());
+        this.setStatus(TransactionStatus.PENDING);
         TransactionCreatedEvent event = new TransactionCreatedEvent(
                 this.getTransactionId(),
                 this.getUserId() ,
