@@ -20,4 +20,6 @@ public class EventConsumer {
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
     }
 
+    public void eventConsume() throws IOException, TimeoutException {
+    }
 }

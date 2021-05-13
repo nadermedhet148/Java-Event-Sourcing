@@ -28,11 +28,11 @@ public class UsersController {
 
 
     @PostMapping(value = "")
-    public String createUser(@RequestBody CreateUserRequest body) throws  IOException, TimeoutException {
+    public Object createUser(@RequestBody CreateUserRequest body) throws  IOException, TimeoutException {
         CreateUserCommand cm = new CreateUserCommand(body.getUsername());
         UserService service = new UserService(eventPubliser , eventRepository);
         UserCreatedEvent event = service.createUser(cm);
-        return event.toJson().toString();
+        return event;
     }
 
 }

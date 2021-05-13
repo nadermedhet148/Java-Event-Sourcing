@@ -10,5 +10,8 @@ import org.mapstruct.factory.Mappers;
 public interface EventMapper {
     EventMapper INSTANCE = Mappers.getMapper( EventMapper.class );
 
+    @Mapping(source = "eventType", target = "eventType")
+    @Mapping(target = "data", ignore = true)
     Event domainEventToEvent(DomainEvent event);
+
 }

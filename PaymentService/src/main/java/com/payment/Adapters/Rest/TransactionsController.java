@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
 @RestController
 @RequestMapping(value = "/users")
 
-public class UsersController {
+public class TransactionsController {
 
 
 

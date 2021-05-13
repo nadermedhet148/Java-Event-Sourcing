@@ -15,23 +15,18 @@ public class UserCreatedEvent extends DomainEvent {
 
     private Float balance;
 
-    UserCreatedEvent(
+    public UserCreatedEvent(
             String username,
             String id,
             Float balance
     ){
         this.setEntityName("User");
+        this.setEventType("UserCreated");
         this.setEntityId(id);
         this.username = username;
         this.balance = balance;
-        this.setData(this.toJson().toString());
 
     }
 
-    public JSONObject toJson(){
-    JSONObject jb = new JSONObject();
-    jb.put("username" , username);
-    jb.put("balance" , balance);
-    return jb;
-    }
+
 }

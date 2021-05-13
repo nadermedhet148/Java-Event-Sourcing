@@ -17,8 +17,8 @@ public abstract class DomainEvent {
 
     private Date createdAt = new Date();
 
-    private String data;
+    private String eventType;
 
-    public abstract JSONObject toJson();
+
 
 }

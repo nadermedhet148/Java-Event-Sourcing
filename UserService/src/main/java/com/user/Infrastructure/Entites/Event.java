@@ -24,6 +24,9 @@ public class Event {
     @Column(name = "id")
     private int id ;
 
+    @Column(name = "type")
+    private String eventType;
+
     @Column(name = "entity_name")
     private String entityName;
 
