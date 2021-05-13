@@ -7,6 +7,7 @@ import com.user.Adapters.Messages.EventConsumer;
 import com.user.Adapters.Messages.EventPubliser;
 import com.user.Domain.Event.IEventRepository;
 import com.user.Domain.Services.UserService;
+import com.user.Domain.User.IUserRepository;
 import com.user.Domain.User.ProcessTransactionCommand;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,15 @@ public class TransactionEventsConsumer  extends EventConsumer {
     @Autowired
     EventPubliser eventPubliser;
 
+    @Autowired
+    IUserRepository userRepository;
+
     @Override
     public void eventConsume() throws IOException, TimeoutException {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String messageBody = new String(delivery.getBody(), "UTF-8");
             JSONObject json = new JSONObject(messageBody);
-            UserService service = new UserService(eventPubliser , eventRepository);
+            UserService service = new UserService(eventPubliser , eventRepository,userRepository);
             ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
             switch (json.getString("eventType")){

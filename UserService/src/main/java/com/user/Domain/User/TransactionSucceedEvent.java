@@ -2,11 +2,13 @@ package com.user.Domain.User;
 
 import com.user.Domain.Event.DomainEvent;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.json.JSONObject;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class TransactionSucceedEvent extends DomainEvent {
 
     private int transactionId;

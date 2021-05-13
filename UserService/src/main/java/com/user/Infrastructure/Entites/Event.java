@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.json.JSONObject;
-import org.springframework.data.annotation.CreatedDate;
+
 
 import javax.persistence.*;
 import java.util.Date;

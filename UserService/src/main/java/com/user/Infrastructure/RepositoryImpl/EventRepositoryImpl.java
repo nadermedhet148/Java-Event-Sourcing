@@ -5,11 +5,12 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.user.Domain.Event.DomainEvent;
 import com.user.Domain.Event.IEventRepository;
+import com.user.Domain.User.TransactionFailedEvent;
+import com.user.Domain.User.TransactionSucceedEvent;
 import com.user.Domain.User.UserCreatedEvent;
 import com.user.Infrastructure.Entites.Event;
 import com.user.Infrastructure.JpaRepository.IEventJpaRepository;
 import com.user.Infrastructure.Mappers.EventMapper;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,15 +36,25 @@ public class EventRepositoryImpl implements IEventRepository {
     public List<DomainEvent> getEntityEvents(String entityName, String entityId) {
         List<Event> events = this.eventJpaRepository.findByEntityNameAndEntityId(entityName,entityId);
         return events.stream().map(event -> {
-            JSONObject payload = new JSONObject(event.getData());
-            UserCreatedEvent domainEvent = null;
-            if(event.getEventType().equals("UserCreated")){
-                domainEvent = new UserCreatedEvent(
-                        payload.getString("username") ,
-                        event.getEntityId(),
-                        payload.getFloat("balance")
-                        );
+            DomainEvent domainEvent = null;
+            try {
+                if(event.getEventType().equals("UserCreated")){
+                    domainEvent = objectMapper.readValue(event.getData() , UserCreatedEvent.class);
+                    domainEvent.setEntityId(event.getEntityId());
+
+                }
+                if(event.getEventType().equals("TransactionFailed")){
+                    domainEvent = objectMapper.readValue(event.getData() , TransactionFailedEvent.class);
+                    domainEvent.setEntityId(event.getEntityId());
+                }
+                if(event.getEventType().equals("TransactionSucceed")){
+                    domainEvent = objectMapper.readValue(event.getData() , TransactionSucceedEvent.class);
+                    domainEvent.setEntityId(event.getEntityId());
+                }
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
             }
+
             return domainEvent;
         }).filter(ele-> ele != null).collect(Collectors.toList());
     }

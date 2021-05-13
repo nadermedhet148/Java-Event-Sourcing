@@ -5,7 +5,8 @@ import com.user.Adapters.Rest.requests.CreateUserRequest;
 import com.user.Domain.Event.IEventRepository;
 import com.user.Domain.Services.UserService;
 import com.user.Domain.User.CreateUserCommand;
-import com.user.Domain.User.UserCreatedEvent;
+import com.user.Domain.User.IUserRepository;
+import com.user.Domain.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,15 +25,18 @@ public class UsersController {
     IEventRepository eventRepository;
 
     @Autowired
+    IUserRepository userRepository;
+
+    @Autowired
     EventPubliser eventPubliser;
 
 
     @PostMapping(value = "")
     public Object createUser(@RequestBody CreateUserRequest body) throws  IOException, TimeoutException {
         CreateUserCommand cm = new CreateUserCommand(body.getUsername());
-        UserService service = new UserService(eventPubliser , eventRepository);
-        UserCreatedEvent event = service.createUser(cm);
-        return event;
+        UserService service = new UserService(eventPubliser , eventRepository,userRepository);
+        User user = service.createUser(cm);
+        return user;
     }
 
 }
