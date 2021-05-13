@@ -19,8 +19,8 @@ public class EventPubliser implements IEventPublisher {
     public void publish(DomainEvent ev) throws IOException, TimeoutException {
         ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        String QUEUE_NAME = ev.getEntityName();
-       String message = objectMapper.writeValueAsString(ev) ;
+        String QUEUE_NAME = ev.getEntityName() + "_QUEUE";
+        String message = objectMapper.writeValueAsString(ev) ;
         Channel channel = this.rmqBase.getChannel();
                     channel.queueDeclare(QUEUE_NAME, false, false, false, null);
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));

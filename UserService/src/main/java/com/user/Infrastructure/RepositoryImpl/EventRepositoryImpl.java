@@ -52,7 +52,7 @@ public class EventRepositoryImpl implements IEventRepository {
                     domainEvent.setEntityId(event.getEntityId());
                 }
             } catch (JsonProcessingException e) {
-                e.printStackTrace();
+                return null;
             }
 
             return domainEvent;
