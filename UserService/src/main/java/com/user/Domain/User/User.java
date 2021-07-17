@@ -1,11 +1,13 @@
 package com.user.Domain.User;
 
 import com.user.Domain.Event.DomainEvent;
+import com.user.Infrastructure.Entites.Event;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -19,6 +21,8 @@ public class User {
     private String userId;
 
     private Float balance;
+
+    private ArrayList<DomainEvent> events = new ArrayList<>();
 
     public UserCreatedEvent process(CreateUserCommand cm){
         UUID userId =  UUID.randomUUID();
@@ -51,6 +55,7 @@ public class User {
         this.userId = ev.getEntityId();
         this.username = ev.getUsername();
         this.balance = ev.getBalance();
+        this.events.add(ev);
     }
 
     public void apply(TransactionSucceedEvent ev) {
@@ -60,9 +65,11 @@ public class User {
             case "D":
                 this.balance += ev.getAmount();
         }
+        this.events.add(ev);
     }
 
     public void apply(TransactionFailedEvent ev) {
+        this.events.add(ev);
 
     }
 

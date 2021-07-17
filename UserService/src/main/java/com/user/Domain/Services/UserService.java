@@ -27,8 +27,14 @@ public class UserService {
     public User createUser (CreateUserCommand cm) throws IOException, TimeoutException {
         User user = new User();
         UserCreatedEvent ev =  user.process(cm);
+        user.apply(ev);
         this.publisher.publish(ev);
         this.eventRepository.save(ev);
+        return user;
+    }
+
+    public User getUser (String userId) throws IOException, TimeoutException {
+        User user = this.userRepository.getUser(userId);
         return user;
     }
 

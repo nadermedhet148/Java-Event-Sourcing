@@ -8,10 +8,7 @@ import com.user.Domain.User.CreateUserCommand;
 import com.user.Domain.User.IUserRepository;
 import com.user.Domain.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -36,6 +33,13 @@ public class UsersController {
         CreateUserCommand cm = new CreateUserCommand(body.getUsername());
         UserService service = new UserService(eventPubliser , eventRepository,userRepository);
         User user = service.createUser(cm);
+        return user;
+    }
+
+    @GetMapping(value = "/{userId}")
+    public Object getUser(@PathVariable String userId) throws  IOException, TimeoutException {
+        UserService service = new UserService(eventPubliser , eventRepository,userRepository);
+        User user = service.getUser(userId);
         return user;
     }
 
