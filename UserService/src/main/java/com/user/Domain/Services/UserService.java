@@ -28,7 +28,8 @@ public class UserService {
         User user = new User();
         UserCreatedEvent ev =  user.process(cm);
         user.apply(ev);
-        this.publisher.publish(ev);
+        // no need for now to make this
+        // this.publisher.publish(ev);
         this.eventRepository.save(ev);
         return user;
     }
