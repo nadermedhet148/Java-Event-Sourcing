@@ -51,7 +51,7 @@ public class UserEventsConsumer extends EventConsumer {
             System.out.println(" [x] Received '" + messageBody + "'");
         };
 
-        this.consume("User_QUEUE",deliverCallback);
+        this.consume("User",deliverCallback);
     }
 
 }

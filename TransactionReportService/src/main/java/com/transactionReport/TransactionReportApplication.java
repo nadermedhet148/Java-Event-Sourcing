@@ -1,7 +1,7 @@
-package com.payment;
+package com.transactionReport;
 
-import com.payment.Adapters.Messages.EventConsumer;
-import com.payment.Adapters.Messages.Listeners.UserEventsConsumer;
+import com.transactionReport.Adapters.Messages.EventConsumer;
+import com.transactionReport.Adapters.Messages.Listeners.UserEventsConsumer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 @SpringBootApplication
-public class PaymentsApplication {
+public class TransactionReportApplication {
 
 	public static void main(String[] args)  {
-		ConfigurableApplicationContext context = SpringApplication.run(PaymentsApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(TransactionReportApplication.class, args);
 		EventConsumer userEventsConsumer = (UserEventsConsumer) context.getBean("userEventsConsumer");
 
 		List<EventConsumer> consumers = Arrays.asList(userEventsConsumer);

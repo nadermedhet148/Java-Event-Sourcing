@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a0d907c6-7594-4f92-88bc-390b1fccce98" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/TransactionReportService/src/main/java/com/transactionReport/Domain/Event/DomainEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TransactionReportService/src/main/java/com/transactionReport/Infrastructure/JpaRepository/ITransactionJpaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/event-sourcing.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/EventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/EventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/EventPubliser.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/EventPubliser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/Listeners/UserEventsConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/Listeners/UserEventsConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/PaymentsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/PaymentsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/EventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/EventConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/EventPubliser.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/EventPubliser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/Listeners/TransactionEventsConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/Listeners/TransactionEventsConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1vRwOX3zcerRs6iUF98mttYTHrA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/README.md" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0d907c6-7594-4f92-88bc-390b1fccce98" name="Default Changelist" comment="" />
+      <created>1626538181036</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626538181036</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="289" y="386" width="424" height="521" key="FileChooserDialogImpl" timestamp="1626553107941">
+      <screen x="0" y="27" width="1024" height="1253" />
+    </state>
+    <state x="289" y="386" width="424" height="521" key="FileChooserDialogImpl/0.27.1024.1253/1024.0.1920.1080@0.27.1024.1253" timestamp="1626553107941" />
+    <state x="65" y="343" width="883" height="601" key="new project wizard" timestamp="1626538738014">
+      <screen x="0" y="27" width="1024" height="1253" />
+    </state>
+    <state x="65" y="343" width="883" height="601" key="new project wizard/0.27.1024.1253/1024.0.1920.1080@0.27.1024.1253" timestamp="1626538738014" />
+    <state x="176" y="295" key="run.anything.popup" timestamp="1626553616871">
+      <screen x="0" y="27" width="1024" height="1253" />
+    </state>
+    <state x="176" y="295" key="run.anything.popup/0.27.1024.1253/1024.0.1920.1080@0.27.1024.1253" timestamp="1626553616871" />
+  </component>
+</project>
