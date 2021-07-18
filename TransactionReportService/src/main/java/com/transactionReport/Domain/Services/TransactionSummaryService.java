@@ -1,6 +1,8 @@
 package com.transactionReport.Domain.Services;
 
 import com.transactionReport.Domain.Models.TransactionSummary.*;
+import com.transactionReport.Domain.Models.User.IUserRepository;
+import com.transactionReport.Domain.Models.User.User;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -9,18 +11,20 @@ public class TransactionSummaryService {
 
     private ITransactionSummaryRepository transactionRepository;
 
+    private IUserRepository userRepository;
 
-    public TransactionSummaryService(ITransactionSummaryRepository transactionRepository){
+
+    public TransactionSummaryService(ITransactionSummaryRepository transactionRepository,
+                                     IUserRepository userRepository
+    ){
         this.transactionRepository= transactionRepository;
+        this.userRepository = userRepository;
     }
 
     public TransactionSummary createTransactionSummary(CreateTransactionSummaryCommand cm) throws IOException, TimeoutException {
 
-//        Transaction transaction = new Transaction();
-//        TransactionCreatedEvent event = transaction.process(cm);
-//        this.transactionRepository.save(transaction);
-//        event.setTransactionId(transaction.getTransactionId());
-//        this.publisher.publish(event);
+        User user = this.userRepository.getUser(cm.getUserId());
+
         return null;
     }
 

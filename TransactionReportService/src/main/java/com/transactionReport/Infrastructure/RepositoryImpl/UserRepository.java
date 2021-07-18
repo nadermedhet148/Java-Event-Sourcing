@@ -1,4 +1,19 @@
 package com.transactionReport.Infrastructure.RepositoryImpl;
 
-public class UserRepository {
+import com.transactionReport.Domain.Models.User.IUserRepository;
+import com.transactionReport.Domain.Models.User.User;
+import com.transactionReport.Infrastructure.ServicesProxy.IUserService;
+import com.transactionReport.Infrastructure.ServicesProxy.UserServiceProxy;
+
+
+public class UserRepository implements IUserRepository {
+
+    private IUserService proxy = new UserServiceProxy().getProxy();
+
+    @Override
+    public User getUser(String id){
+
+        User user = proxy.getUser(id);
+        return user;
+    }
 }
