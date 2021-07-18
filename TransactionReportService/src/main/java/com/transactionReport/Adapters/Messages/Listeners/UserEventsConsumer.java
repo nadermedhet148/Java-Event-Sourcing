@@ -7,6 +7,7 @@ import com.transactionReport.Domain.Services.TransactionSummaryService;
 import com.transactionReport.Domain.Models.TransactionSummary.CreateTransactionSummaryCommand;
 import com.transactionReport.Domain.Models.TransactionSummary.ITransactionSummaryRepository;
 import com.rabbitmq.client.DeliverCallback;
+import com.transactionReport.Infrastructure.RepositoryImpl.TransactionRepository;
 import com.transactionReport.Infrastructure.RepositoryImpl.UserRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class UserEventsConsumer extends EventConsumer {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String messageBody = new String(delivery.getBody(), "UTF-8");
             JSONObject json = new JSONObject(messageBody);
-            TransactionSummaryService service = new TransactionSummaryService(transactionRepository , new UserRepository());
+            TransactionSummaryService service = new TransactionSummaryService(transactionRepository , new UserRepository(), new TransactionRepository());
             ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             switch (json.getString("eventType")){
                 case "TransactionSucceed" :

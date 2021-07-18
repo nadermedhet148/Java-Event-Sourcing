@@ -1,4 +1,4 @@
-package com.transactionReport.Infrastructure.ServicesProxy;
+package com.transactionReport.Infrastructure.ServicesProxy.User;
 
 import feign.Feign;
 import feign.gson.GsonDecoder;

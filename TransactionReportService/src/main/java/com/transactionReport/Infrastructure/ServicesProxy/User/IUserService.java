@@ -1,4 +1,4 @@
-package com.transactionReport.Infrastructure.ServicesProxy;
+package com.transactionReport.Infrastructure.ServicesProxy.User;
 
 import com.transactionReport.Domain.Models.User.User;
 import feign.Param;
