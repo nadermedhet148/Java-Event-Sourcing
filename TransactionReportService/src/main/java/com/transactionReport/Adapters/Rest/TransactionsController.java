@@ -1,8 +1,7 @@
 package com.transactionReport.Adapters.Rest;
 
 import com.transactionReport.Adapters.Rest.requests.CreatePaymentRequest;
-import com.transactionReport.Domain.Services.TransactionService;
-import com.transactionReport.Infrastructure.RepositoryImpl.TransactionRepositoryImpl;
+import com.transactionReport.Infrastructure.RepositoryImpl.TransactionSummaryRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +20,7 @@ public class TransactionsController {
 
 
     @Autowired
-    TransactionRepositoryImpl transactionRepository;
+    TransactionSummaryRepositoryImpl transactionSummaryRepository;
 
 //    @PostMapping(value = "")
 //    public Transaction createTransaction(@RequestBody CreatePaymentRequest body) throws IOException, TimeoutException {

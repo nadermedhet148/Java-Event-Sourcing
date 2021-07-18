@@ -1,20 +1,20 @@
 package com.transactionReport.Domain.Services;
 
-import com.transactionReport.Domain.Transaction.*;
+import com.transactionReport.Domain.Models.TransactionSummary.*;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class TransactionService {
+public class TransactionSummaryService {
 
-    private ITransactionRepository transactionRepository;
+    private ITransactionSummaryRepository transactionRepository;
 
 
-    public TransactionService(ITransactionRepository transactionRepository){
+    public TransactionSummaryService(ITransactionSummaryRepository transactionRepository){
         this.transactionRepository= transactionRepository;
     }
 
-    public Transaction createTransaction(CreateTransactionCommand cm) throws IOException, TimeoutException {
+    public TransactionSummary createTransactionSummary(CreateTransactionSummaryCommand cm) throws IOException, TimeoutException {
 
 //        Transaction transaction = new Transaction();
 //        TransactionCreatedEvent event = transaction.process(cm);

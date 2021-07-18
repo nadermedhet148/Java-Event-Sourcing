@@ -1,4 +1,4 @@
-package com.transactionReport.Domain.Transaction;
+package com.transactionReport.Domain.Models.TransactionSummary;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class CreateTransactionCommand {
+public class CreateTransactionSummaryCommand {
     private String userId;
 
     private Integer transactionId;

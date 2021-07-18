@@ -3,9 +3,9 @@ package com.transactionReport.Adapters.Messages.Listeners;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.transactionReport.Adapters.Messages.EventConsumer;
-import com.transactionReport.Domain.Services.TransactionService;
-import com.transactionReport.Domain.Transaction.CreateTransactionCommand;
-import com.transactionReport.Domain.Transaction.ITransactionRepository;
+import com.transactionReport.Domain.Services.TransactionSummaryService;
+import com.transactionReport.Domain.Models.TransactionSummary.CreateTransactionSummaryCommand;
+import com.transactionReport.Domain.Models.TransactionSummary.ITransactionSummaryRepository;
 import com.rabbitmq.client.DeliverCallback;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeoutException;
 public class UserEventsConsumer extends EventConsumer {
 
     @Autowired
-    ITransactionRepository transactionRepository;
+    ITransactionSummaryRepository transactionRepository;
 
 
 
@@ -29,13 +29,13 @@ public class UserEventsConsumer extends EventConsumer {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String messageBody = new String(delivery.getBody(), "UTF-8");
             JSONObject json = new JSONObject(messageBody);
-            TransactionService service = new TransactionService(transactionRepository);
+            TransactionSummaryService service = new TransactionSummaryService(transactionRepository);
             ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             switch (json.getString("eventType")){
                 case "TransactionSucceed" :
                 case "TransactionFailed" :
                     try {
-                        service.createTransaction(objectMapper.readValue(messageBody , CreateTransactionCommand.class ));
+                        service.createTransactionSummary(objectMapper.readValue(messageBody , CreateTransactionSummaryCommand.class ));
                     } catch (TimeoutException e) {
                         e.printStackTrace();
                     }

@@ -1,4 +1,4 @@
-package com.transactionReport.Domain.Transaction;
+package com.transactionReport.Domain.Models.TransactionSummary;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class Transaction {
+public class TransactionSummary {
 
     @Id
     @GeneratedValue
