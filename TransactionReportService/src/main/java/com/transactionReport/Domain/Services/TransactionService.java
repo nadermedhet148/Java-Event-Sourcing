@@ -15,6 +15,7 @@ public class TransactionService {
     }
 
     public Transaction createTransaction(CreateTransactionCommand cm) throws IOException, TimeoutException {
+
 //        Transaction transaction = new Transaction();
 //        TransactionCreatedEvent event = transaction.process(cm);
 //        this.transactionRepository.save(transaction);

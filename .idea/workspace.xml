@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0d907c6-7594-4f92-88bc-390b1fccce98" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TransactionReportService/src/main/java/com/transactionReport/Domain/Event/DomainEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TransactionReportService/src/main/java/com/transactionReport/Infrastructure/JpaRepository/ITransactionJpaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/event-sourcing.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/EventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/EventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/EventPubliser.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/EventPubliser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/Listeners/UserEventsConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/Adapters/Messages/Listeners/UserEventsConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/PaymentsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaymentService/src/main/java/com/payment/PaymentsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/EventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/EventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/EventPubliser.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/EventPubliser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/Listeners/TransactionEventsConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/user/Adapters/Messages/Listeners/TransactionEventsConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +35,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/README.md" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PaymentService" />
     <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -64,10 +50,11 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="289" y="386" width="424" height="521" key="FileChooserDialogImpl" timestamp="1626553107941">
-      <screen x="0" y="27" width="1024" height="1253" />
+    <state x="289" y="390" width="424" height="491" key="FileChooserDialogImpl" timestamp="1626620663151">
+      <screen x="0" y="32" width="1024" height="1248" />
     </state>
     <state x="289" y="386" width="424" height="521" key="FileChooserDialogImpl/0.27.1024.1253/1024.0.1920.1080@0.27.1024.1253" timestamp="1626553107941" />
+    <state x="289" y="390" width="424" height="491" key="FileChooserDialogImpl/1024.0.1920.1080/0.32.1024.1248@0.32.1024.1248" timestamp="1626620663151" />
     <state x="65" y="343" width="883" height="601" key="new project wizard" timestamp="1626538738014">
       <screen x="0" y="27" width="1024" height="1253" />
     </state>

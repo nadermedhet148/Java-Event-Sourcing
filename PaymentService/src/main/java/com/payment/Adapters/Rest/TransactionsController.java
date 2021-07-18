@@ -7,10 +7,7 @@ import com.payment.Domain.Transaction.CreateTransactionCommand;
 import com.payment.Domain.Transaction.Transaction;
 import com.payment.Infrastructure.RepositoryImpl.TransactionRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -32,6 +29,13 @@ public class TransactionsController {
     public Transaction createTransaction(@RequestBody CreatePaymentRequest body) throws IOException, TimeoutException {
         TransactionService transactionService = new TransactionService( eventPubliser,transactionRepository);
         Transaction transaction = transactionService.createTransaction(new CreateTransactionCommand(body.getUserId() , body.getAmount() , body.getType()));
+        return transaction;
+    }
+
+    @GetMapping(value = "/{id}")
+    public Transaction getTransaction(@PathVariable Integer id) throws IOException, TimeoutException {
+        TransactionService transactionService = new TransactionService( eventPubliser,transactionRepository);
+        Transaction transaction = transactionService.getTransaction(id);
         return transaction;
     }
 

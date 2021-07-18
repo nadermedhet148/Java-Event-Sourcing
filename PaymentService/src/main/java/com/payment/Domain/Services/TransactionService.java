@@ -28,6 +28,12 @@ public class TransactionService {
         return transaction;
     }
 
+    public Transaction getTransaction(Integer id){
+        Transaction transaction = transactionRepository.getOne(id);
+        return  transaction;
+    }
+
+
     public Transaction acceptTransaction(AcceptTransactionCommand cm){
         Transaction transaction = transactionRepository.getOne(cm.getTransactionId());
         transaction.setStatus(TransactionStatus.ACCEPTED);

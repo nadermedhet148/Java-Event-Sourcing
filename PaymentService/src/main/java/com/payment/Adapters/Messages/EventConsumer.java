@@ -1,5 +1,6 @@
 package com.payment.Adapters.Messages;
 
+import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DeliverCallback;
 import com.payment.Adapters.Messages.RMQ.RMQBase;
@@ -14,12 +15,12 @@ public class EventConsumer {
 
     }
 
-    public void consume(String QUEUE_NAME , DeliverCallback deliverCallback) throws IOException, TimeoutException {
+    public void consume(String EXCHANGE_NAME , DeliverCallback deliverCallback) throws IOException, TimeoutException {
         Channel channel = this.rmqBase.getChannel();
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        channel.exchangeDeclare(QUEUE_NAME , "fanout");
-        channel.queueBind(QUEUE_NAME, QUEUE_NAME, "");
-        channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
+        channel.exchangeDeclare(EXCHANGE_NAME , BuiltinExchangeType.FANOUT);
+        String queueName = channel.queueDeclare().getQueue();
+        channel.queueBind(queueName, EXCHANGE_NAME, "");
+        channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
     }
 
     public void eventConsume() throws IOException, TimeoutException {

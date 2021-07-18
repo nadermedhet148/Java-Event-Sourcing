@@ -14,12 +14,12 @@ public class EventConsumer {
 
     }
 
-    public void consume(String QUEUE_NAME , DeliverCallback deliverCallback) throws IOException, TimeoutException {
+    public void consume(String EXCHANGE_NAME , DeliverCallback deliverCallback) throws IOException, TimeoutException {
         Channel channel = this.rmqBase.getChannel();
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        channel.exchangeDeclare(QUEUE_NAME , "fanout");
-        channel.queueBind(QUEUE_NAME, QUEUE_NAME, "");
-        channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
+        channel.exchangeDeclare(EXCHANGE_NAME , "fanout");
+        String queueName = channel.queueDeclare().getQueue();
+        channel.queueBind(queueName, EXCHANGE_NAME, "");
+        channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
     }
 
     public void eventConsume() throws IOException, TimeoutException {
