@@ -6,6 +6,8 @@ import com.transactionReport.Infrastructure.JpaRepository.ITransactionSummaryJpa
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class TransactionSummaryRepositoryImpl implements ITransactionSummaryRepository {
@@ -16,6 +18,11 @@ public class TransactionSummaryRepositoryImpl implements ITransactionSummaryRepo
     public TransactionSummary save(TransactionSummary transaction) {
         this.transactionSummaryJpaRepository.save(transaction);
         return transaction;
+    }
+
+    @Override
+    public List<TransactionSummary> list() {
+        return this.transactionSummaryJpaRepository.findAll();
     }
 
 

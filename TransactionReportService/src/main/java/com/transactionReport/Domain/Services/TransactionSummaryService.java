@@ -8,6 +8,7 @@ import com.transactionReport.Domain.Models.User.User;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 public class TransactionSummaryService {
@@ -44,6 +45,9 @@ public class TransactionSummaryService {
         return transactionSummary;
     }
 
+    public List<TransactionSummary> list(){
+        return  this.transactionSummaryRepository.list();
+    }
 
 
 
