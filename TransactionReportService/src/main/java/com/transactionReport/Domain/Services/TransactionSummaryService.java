@@ -5,9 +5,9 @@ import com.transactionReport.Domain.Models.Transaction.Transaction;
 import com.transactionReport.Domain.Models.TransactionSummary.*;
 import com.transactionReport.Domain.Models.User.IUserRepository;
 import com.transactionReport.Domain.Models.User.User;
-import com.transactionReport.Infrastructure.ServicesProxy.Transaction.ITransactionService;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.concurrent.TimeoutException;
 
 public class TransactionSummaryService {
@@ -30,8 +30,18 @@ public class TransactionSummaryService {
     public TransactionSummary createTransactionSummary(CreateTransactionSummaryCommand cm) throws IOException, TimeoutException {
         User user = this.userRepository.getUser(cm.getUserId());
         Transaction transaction = this.transactionRepository.getTransaction(cm.getTransactionId());
-
-        return null;
+        TransactionSummary transactionSummary = new TransactionSummary();
+        transactionSummary.setAmount(transaction.getAmount());
+        transactionSummary.setStatus(transaction.getStatus());
+        transactionSummary.setBalanceAfterTransaction(user.getBalance());
+        transactionSummary.setUserId(user.getUserId());
+        transactionSummary.setUsername(user.getUsername());
+        transactionSummary.setStatus(transaction.getStatus());
+        transactionSummary.setType(transaction.getType());
+        transactionSummary.setTransactionId(transaction.getTransactionId());
+        transactionSummary.setCreatedAt(new Date());
+        this.transactionSummaryRepository.save(transactionSummary);
+        return transactionSummary;
     }
 
 

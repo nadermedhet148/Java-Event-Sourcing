@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,6 +24,10 @@ public class TransactionSummary {
     private Integer id ;
 
 
+    @Column(name = "transaction_id")
+    private Integer transactionId ;
+
+
     @Column(name = "user_id")
     private String userId;
 
@@ -31,7 +36,7 @@ public class TransactionSummary {
     private String username;
 
     @Column(name = "balance_after_transaction")
-    private String balanceAfterTransaction;
+    private Float balanceAfterTransaction;
 
     @Column(name = "amount")
     private Float amount;
@@ -43,6 +48,7 @@ public class TransactionSummary {
     private String status;
 
     @Column(name = "created_at", nullable = false, updatable = false)
+    @CreatedDate
     private Date createdAt;
 
 }
