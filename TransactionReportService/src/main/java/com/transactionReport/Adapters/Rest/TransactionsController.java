@@ -7,6 +7,7 @@ import com.transactionReport.Domain.Services.TransactionSummaryService;
 import com.transactionReport.Infrastructure.RepositoryImpl.TransactionRepository;
 import com.transactionReport.Infrastructure.RepositoryImpl.TransactionSummaryRepositoryImpl;
 import com.transactionReport.Infrastructure.RepositoryImpl.UserRepository;
+import io.reactivex.Observable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,8 @@ import java.util.concurrent.TimeoutException;
 public class TransactionsController {
 
     @Autowired
-    ITransactionSummaryRepository transactionRepository;
+    TransactionSummaryService transactionSummaryService;
+
 
 
 
@@ -28,10 +30,8 @@ public class TransactionsController {
     TransactionSummaryRepositoryImpl transactionSummaryRepository;
 
     @GetMapping(value = "")
-    public List<TransactionSummary> listTransactionSummaries() throws IOException, TimeoutException {
-
-        TransactionSummaryService service = new TransactionSummaryService(transactionRepository , new UserRepository(), new TransactionRepository());
-        return service.list();
+    public Observable<List<TransactionSummary>> listTransactionSummaries() throws IOException, TimeoutException {
+        return transactionSummaryService.list();
     }
 
 }

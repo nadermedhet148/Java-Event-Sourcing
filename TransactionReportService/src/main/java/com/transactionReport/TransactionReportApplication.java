@@ -2,9 +2,17 @@ package com.transactionReport;
 
 import com.transactionReport.Adapters.Messages.EventConsumer;
 import com.transactionReport.Adapters.Messages.Listeners.UserEventsConsumer;
+import com.transactionReport.Domain.Models.TransactionSummary.ITransactionSummaryRepository;
+import com.transactionReport.Domain.Services.TransactionSummaryService;
+import com.transactionReport.Infrastructure.EventsStream.EventsStreamer;
+import com.transactionReport.Infrastructure.RepositoryImpl.TransactionRepository;
+import com.transactionReport.Infrastructure.RepositoryImpl.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -29,5 +37,20 @@ public class TransactionReportApplication {
 		});
 
 	}
+
+	@Autowired
+	ITransactionSummaryRepository transactionRepository;
+
+	@Bean
+	public EventsStreamer eventsStreamer() {
+		return new EventsStreamer();
+	}
+	@Bean
+	public TransactionSummaryService transactionSummaryService(){
+		return new TransactionSummaryService(transactionRepository , new UserRepository(), new TransactionRepository());
+
+	}
+
+
 
 }
